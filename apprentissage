@@ -1,0 +1,2 @@
+La commande de creation d'un controlleur est 
+php artisan make:controller <controller name>
