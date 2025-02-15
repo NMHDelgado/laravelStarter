@@ -23,11 +23,11 @@
             <li class="has-sub nav-item"><a href="#"><i class="icon-screen-desktop"></i><span data-i18n=""
                   class="menu-title">Apps</span></a>
               <ul class="menu-content">
-                <li><a href="{{route('united')}}" class="menu-item">United</a>
+                <li><a href="{{route('list-product')}}" class="menu-item">Products</a>
                 </li>
-                <li><a href="taskboard.html" class="menu-item">Taskboard</a>
+                <li><a href="{{route('list-category')}}" class="menu-item">Categories</a>
                 </li>
-                <li><a href="calendar.html" class="menu-item">Calendar</a>
+                <li><a href="{{route('list-unity')}}" class="menu-item">Unities</a>
                 </li>
               </ul>
             </li>
