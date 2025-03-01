@@ -23,8 +23,8 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');
             $table->unsignedBigInteger('unity_id');
             $table->foreign('unity_id')->references('id')->on('categories')->onDelete('restrict');
+            $table->foreignId('utilisateur_id')->constrained('utilisateurs', 'id')->onDelete('cascade');
             $table->timestamps();
-            // ('Categories', 'id');
         });
     }
 

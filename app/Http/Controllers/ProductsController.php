@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unities;
 use App\Models\Products;
 use App\Models\Categories;
-use App\Models\Unities;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -14,9 +15,22 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
-        // $products = Products::with(['category', 'unity'])->get();
-        return view('Products.listProduct', compact('products'));
+        // $products = Products::all();
+        $utilisateur_id = Auth::id();
+        if($utilisateur_id == 1){
+            $products = Products::with(['category', 'unity', 'utilisateur'])->get();
+            return view('Products.sudoListProduct', compact('products'));
+        } else{
+            $products = Products::where('utilisateur_id', $utilisateur_id)->get();
+            return view('Products.listProduct', compact('products'));
+        }
+        
+        // foreach($products as $product){
+        //     dd($product);
+        // }
+       
+        // ::with(['category', 'unity'])->get();
+        
     }
 
     /**
@@ -53,7 +67,17 @@ class ProductsController extends Controller
             'quantity' => 'required|integer'
         ]);
 
-        Products::create($request->all());
+        $id = Auth::id();
+        $product = new Products();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
+        $product->unity_id = $request->unity_id;
+        $product->quantity = $request->quantity;
+        $product->utilisateur_id = $id;
+
+        $product->save();
         return redirect()->route('list-product')->with('succes', 'Product was successful added');
     }
 
