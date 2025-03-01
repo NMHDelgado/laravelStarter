@@ -16,7 +16,8 @@ class Products extends Model
         'price',
         'category_id',
         'unity_id',
-        'quantity'
+        'quantity',
+        'utilisateur_id'
     ];
 
     public function category()
@@ -27,5 +28,10 @@ class Products extends Model
     public function unity()
     {
         return $this->belongsTo(Unities::class, 'unity_id');
+    }
+
+    public function utilisateur()
+    {
+        return $this->belongsTo(Utilisateur::class, 'utilisateur_id');
     }
 }

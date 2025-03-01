@@ -97,7 +97,7 @@
               <li class="dropdown nav-item mr-0"><a id="dropdownBasic3" href="#" data-toggle="dropdown"
                   class="nav-link position-relative dropdown-user-link dropdown-toggle"><span
                     class="avatar avatar-online"><img id="navbar-avatar"
-                      src="../app-assets/img/portrait/small/avatar-s-3.jpg" alt="avatar" /></span>
+                      src="{{ asset('storage/' . (Auth::user()->profile ?? '../../app-assets/img/portrait/small/avatar-s-3.jpg')) }}" alt="avatar" /></span>
                   <p class="d-none">User Settings</p>
                 </a>
                 <div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-right">
@@ -106,8 +106,8 @@
                       class="dropdown-item py-1"><i class="ft-message-circle mr-2"></i><span>My Chat</span></a><a
                       href="javascript:;" class="dropdown-item py-1"><i
                         class="ft-settings mr-2"></i><span>Settings</span></a>
-                    <div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item"><i
-                        class="ft-power mr-2"></i><span>Logout</span></a>
+                    <div class="dropdown-divider"></div><a href="{{ route('logout') }}" class="dropdown-item"><i
+                        class="ft-power mr-2"></i><span>Logout</span></a>    
                   </div>
                 </div>
               </li>
